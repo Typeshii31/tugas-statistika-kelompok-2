@@ -1,0 +1,17 @@
+# Folder hasil chart (dibuat otomatis saat program dijalankan)
+output_chart/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.env
+
+# Editor/IDE
+.idea/
+.vscode/
+*.DS_Store
