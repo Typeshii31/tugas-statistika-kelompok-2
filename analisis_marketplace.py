@@ -14,7 +14,7 @@
 import os
 import pandas as pd
 import matplotlib
-matplotlib.use("Agg")  # backend non-interaktif, agar bisa jalan di terminal tanpa GUI
+# matplotlib.use("Agg")  # Aktifkan baris ini jika ingin berjalan tanpa GUI (headless)
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 
@@ -117,7 +117,7 @@ def buat_histogram(freq_series, judul, xlabel, ylabel, nama_file, warna="steelbl
     path = os.path.join(OUTPUT_DIR, nama_file)
     fig.savefig(path, dpi=150, bbox_inches="tight")
     print(f"   [OK] Chart disimpan: {path}")
-    plt.close(fig)
+    # plt.close(fig)  # Jangan ditutup langsung agar bisa ditampilkan di akhir
 
 
 # ── Fungsi bantu: buat diagram batang horizontal (untuk data nominal) ────────
@@ -157,7 +157,7 @@ def buat_bar_chart(freq_series, judul, xlabel, ylabel, nama_file, warna="steelbl
     path = os.path.join(OUTPUT_DIR, nama_file)
     fig.savefig(path, dpi=150, bbox_inches="tight")
     print(f"   [OK] Chart disimpan: {path}")
-    plt.close(fig)
+    # plt.close(fig)  # Jangan ditutup langsung agar bisa ditampilkan di akhir
 
 
 # ── Fungsi bantu: buat pie chart (diagram lingkaran) ─────────────────────────
@@ -205,7 +205,7 @@ def buat_pie_chart(freq_series, judul, nama_file, warna_map=None):
     path = os.path.join(OUTPUT_DIR, nama_file)
     fig.savefig(path, dpi=150, bbox_inches="tight")
     print(f"   [OK] Chart disimpan: {path}")
-    plt.close(fig)
+    # plt.close(fig)  # Jangan ditutup langsung agar bisa ditampilkan di akhir
 
 
 # =============================================================================
@@ -344,3 +344,12 @@ buat_pie_chart(
 print("\n" + "=" * 72)
 print("SELESAI! Semua chart tersimpan di folder:", OUTPUT_DIR)
 print("=" * 72)
+
+# Tampilkan semua grafik secara interaktif di layar
+try:
+    print("\nMenampilkan grafik interaktif...")
+    print("Silakan lihat jendela grafik yang muncul. Tutup jendela grafik untuk mengakhiri program.")
+    plt.show()
+except Exception as e:
+    print(f"\n[Info] Tidak dapat menampilkan grafik interaktif di layar: {e}")
+    print("Namun, semua file gambar PNG tetap berhasil disimpan di folder:", OUTPUT_DIR)
